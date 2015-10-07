@@ -1,4 +1,4 @@
-\documentclass[11pt,draft]{article} % use larger type; default would be 10pt
+\documentclass[11pt]{article} % use larger type; default would be 10pt
 \usepackage{my_packages}
 
 %\usepackage[final]{showlabels} % show labels for referencing
@@ -46,7 +46,7 @@ Operating in the vicinity of small planetary bodies is an ongoing and challengin
 % landing methods assume constant gravity
 While there has been significant study of interplanetary transfer trajectories, relatively less analysis has been conducted on operations in the vicinity of small bodies.
 The dynamic environment of a small body is strongly perturbed and challenging for analysis.
-A combination of factors contribute to make operations in the vicinity of small bodies challenging, such as distended body shapes, unknown spin states, relative strength of solar perturbations, and potentially non-gravitational effects in the case of comets~\cite{scheeres2012}.
+A combination of factors contribute to make operations in the vicinity of small bodies challenging, such as distended body shapes, unknown spin states, relative strength of solar perturbations, and non-gravitational effects such as particle collisions in the case of comets~\cite{scheeres2012}.
 
 Previous research near small bodies have considered the translational and rotational dynamics as decoupled~\cite{broschart2005,scheeres1994}.
 The spacecraft is assumed to be point masses in orbit about a central body.
@@ -55,7 +55,7 @@ In addition, as the orbital radius is much larger relative to the body size the 
 Finally, the much weaker gravitational potential of these small bodies also ensures that external disturbances, such as third body effects or solar radiation pressure, are significant.
 These perturbations are typically modeled as disturbances rather than directly in the equations of motion. 
 However, in the unstable environment of these small bodies even small changes in the state can result in escape or impact trajectories~\cite{scheeres2012}.
-As a result, previous work based on a point mass model of the spacecraft are inaccurate and not appropriate for missions in the vicinity of small bodies. 
+As a result, previous work based on a point mass model of the spacecraft are inaccurate and not appropriate for missions in this environment. 
 
 Since asteroids are not centrobaric bodies, where the point mass assumption is valid, but rather extended bodies there is a much richer dynamic structure.
 The full two-body problem governs the combined translation and rotation of two rigid bodies under their mutual gravitational attraction~\cite{fahnestock2006}. 
@@ -74,7 +74,7 @@ As a result, it is possible to design landing trajectories that exploit the inva
 
 % summary of the proposed contributions and benefits over current approach
 In this work, I propose a direct analysis of the coupling between the rotational and translational motion of a spacecraft about a small body. 
-The coupling between attitude states and orbital motion will be directly exploited to allow for orbital transfers using only attitude control.
+The coupling between attitude states and orbital motion will be utilized to allow for orbital transfers using only attitude control.
 This is in direct contrast to previous work where the orbital dynamics are considered independently of the rotational motion~\cite{kubota2003,antreasian2002}.
 In order to effectively harness the effects of small translational forces, the concept of invariant manifolds are extended to the small body environment from their use in the three-body system~\cite{koon2000}. 
 Furthermore, these transfers are considered in an under-actuated sense using only attitude control of the spacecraft.
@@ -102,7 +102,7 @@ The use of invariant manifolds combined with the coupled dynamics will allow for
 There have been several recent missions to small bodies in the solar system.
 NEAR Shoemaker, Hayabusa, Dawn and the recent Rosetta mission have all operated in proximity of asteroids and comets.
 These missions have demonstrated the necessity of accurate dynamic modeling and orbit design capabilities.
-In addition, during these missions several have also achieved soft landings onto these bodies. 
+In addition, during these missions several have achieved soft landings. 
 
 In 2001, NEAR Shoemaker became the first spacecraft to make a soft landing on asteroid 433 Eros~\cite{antreasian2002}.
 In spite of never being designed for landing, a series of open loop maneuvers were designed to enable a close flyby and a prolonged descent to the surface.
@@ -174,7 +174,7 @@ This is an extension to the well known two-body problem as it includes the effec
 The configuration space of each body is the special Euclidean group, \( \SE = \R^3 \times \SO \). 
 We define a heliocentric inertial reference frame fixed to the Sun. 
 A body fixed frame is defined originating at the center of mass of each body of interest and aligned with its principle axes.
-The position of each body is defined by \( b_A, b_S \in \R^3 \) which represents the inertial position of the body with respect to the Sun, expressed in the inertial frame. 
+The position of each body is defined by \( b_A, b_S \in \R^3 \), which represents the inertial position of the body with respect to the Sun, expressed in the inertial frame. 
 The attitude of the each body is defined by \( R_A, R_S \in \SO\) which transforms the representation of a vector from the body-fixed frame to the inertial frame.
 The dynamics are defined by
 \begin{align*}
@@ -183,10 +183,10 @@ The dynamics are defined by
 	m \dot{v} &= m v \times \Omega + \sum F(b, R) \, ,\\
 	J \dot{\Omega}  &= J \Omega \times \Omega +  \sum M(b, R) \, ,
 \end{align*}
-where the translational and rotational velocities are defined in the body fixed frame as \( v , \Omega \in \R^3 \), respectively.
+where the translational and rotational velocities are defined in the body fixed frame as \( v , \Omega \in \R^3 \).
 
 This general form of the coupled dynamics allows for a variety of forces to be modeled.
-The external forces and moments, \( F, M \in \R^3 \) respectively, are expressed in the body fixed frame and represent the forces due to the gravity and solar effects.
+The applied forces and moments, \( F, M \in \R^3 \) respectively, are expressed in the body fixed frame and represent the forces due to the gravity and solar effects.
 We assume the small body, or asteroid, is only under the influence of a gravitational force and moment caused by the Sun.
 This means that the motion of the spacecraft does not affect the motion of the asteroid. 
 However, the motion of the spacecraft is influenced by both the asteroid and the Sun.
@@ -218,7 +218,7 @@ The existence of this integral allows the use of zero-velocity surfaces to be de
 In addition, this implies that equilibrium points can exist as well as families of periodic orbits in these systems~\cite{scheeres2012}.
  
 This structure is similar to that of the three-body problem and allows for a variety of stable and unstable manifolds~\cite{hu2002}.
-In addition, analysis of the dynamic environment allows for energy free transfers about the asteroid and can be extended to landing~\cite{herrera2014}.
+In addition, analysis of the dynamic environment allows for energy free transfers about the asteroid and which may be extended to landing~\cite{herrera2014}.
 Previous work has treated the spacecraft as a point mass rather than an extended rigid body.
 This ignores the significant effects of attitude dependent forces and moments on the vehicle and the resulting trajectory. 
 We avoid this by directly considering a coupled model of the spacecraft.
@@ -257,18 +257,21 @@ The gravitational potential of Eros is defined as
 \begin{align*}
 	\mathcal{U} = \frac{\mu_A}{\norm{r}}-\frac{\mu_A C_{20} \parenth{x^2 + y^2 - 2 z^2}}{2 \norm{r}^5} + \frac{3 \mu_A C_{22} \parenth{x^2 - y^2}}{\norm{r}^5}\, ,
 \end{align*}
-where \( r = \begin{bmatrix} x & y & z \end{bmatrix} \) is the position of the spacecraft relative to the asteroid, represented in the asteroid fixed frame.
+where \( r = \begin{bmatrix} x & y & z \end{bmatrix}^T \) is the position of the spacecraft relative to the asteroid, represented in the asteroid fixed frame.
 The gravitational force and moment due to the asteroid on the spacecraft are calculated using this form of potential function.
-In spite of this relatively simple model, \Cref{fig:orbits} shows the effect of the orbit-attitude coupling on the motion of a spacecraft.
-Over time the effect of the attitude dependent gravitational force greatly perturbs the trajectory.
+\Cref{fig:orbits} shows the effect of the orbit-attitude coupling on the motion of a spacecraft.
+In spite of this relatively simple model, the attitude dependent gravitational force greatly perturbs the trajectory over long periods of time.
 This effect is magnified due to the distended shape of 433 Eros.
 Rather than having a tumbling spacecraft, an attitude control scheme will be generated to control the translational forces on the spacecraft. 
 This will be used to maintain desired orbits as well as conduct transfers using invariant manifolds.
 
 In the vicinity of small bodies there is a strong coupling between translational and rotational motion.
-These preliminary clearly demonstrate the effect of an attitude dependent on the motion of a spacecraft. 
-Neglecting these effects is both inaccurate and inefficient. 
-The goal of this work is the design of attitude control systems that harness the strongly perturbed dynamics near small bodies to enable fuel free transfers and landings.
+These preliminary demonstrate the effect of considering the spacecraft as a rigidy body rather than a point mass.
+The attitude dependent force causes large pertubations in the spacecraft trajectory. 
+The non-spherical shape and the small orbital radius contribute to increasing this perturbation.
+Neglecting these effects is both inaccurate and inefficient.
+By orientating the spacecraft such that the gravitational force is directed in the desired direction, one could design transfer or maintain orbital stability without fuel expenditure. 
+The goal of this work is the design of attitude control systems that harness the strongly perturbed dynamics near small bodies to enable station-keeping, fuel free transfers, and landings.
 
 %Insight into dynamics by allowing analytical results
 %Possible to obtain this model solely from ground based observations
