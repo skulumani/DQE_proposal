@@ -1,5 +1,9 @@
-\documentclass[11pt]{article} % use larger type; default would be 10pt
+\documentclass[11pt,draft]{article} % use larger type; default would be 10pt
 \usepackage{my_packages}
+
+%\usepackage[final]{showlabels} % show labels for referencing
+
+%\usepackage{refcheck} % check for unused references/labels
 
 \title{Coupled Dynamics in the Vicinity of Small Bodies}
 \author{Shankar Kulumani}
@@ -41,8 +45,8 @@ Operating in the vicinity of small planetary bodies is an ongoing and challengin
 % fail to exploit dynamic structure (equilibrium points/periodic orbits/invariant manifolds)
 % landing methods assume constant gravity
 While there has been significant study of interplanetary transfer trajectories, relatively less analysis has been conducted on operations in the vicinity of small bodies.
-The dynamic environment of the small body is strongly perturbed and challenging for analysis.
-A combination of factors contribute to make operations in the vicinity of small bodies challenging,such as distended body shapes, unknown spin states, relative strength of solar perturbations, and potentially non-gravitational effects in the case of comets~\cite{scheeres2012}.
+The dynamic environment of a small body is strongly perturbed and challenging for analysis.
+A combination of factors contribute to make operations in the vicinity of small bodies challenging, such as distended body shapes, unknown spin states, relative strength of solar perturbations, and potentially non-gravitational effects in the case of comets~\cite{scheeres2012}.
 
 Previous research near small bodies have considered the translational and rotational dynamics as decoupled~\cite{broschart2005,scheeres1994}.
 The spacecraft is assumed to be point masses in orbit about a central body.
@@ -94,7 +98,6 @@ The use of invariant manifolds combined with the coupled dynamics will allow for
 %Direct optimal control formulation - difficult to compute onboard
 
 \section{Literature Review}
-
 \subsection{Small Body Missions}
 There have been several recent missions to small bodies in the solar system.
 NEAR Shoemaker, Hayabusa, Dawn and the recent Rosetta mission have all operated in proximity of asteroids and comets.
@@ -112,13 +115,13 @@ The asteroid was small enough that a typical orbit was not possible, rather Haya
 A series of maneuvers were implemented to ensure that Hayabusa remained inertially fixed relative to the body. 
 This placed the vehicle on the Earth-Itokawa line and enabled constant communication with the Earth.
 In addition, this position enabled the asteroid to rotate relative to Hayabus enabling near global mapping in support of landing operations.
-During the landing sequence, Hayabusa transitioned to a body fixed mode using on-board vision sensor, laser measurements, and a passive tracking marker~\cite{kubota2005}. 
+During the landing sequence, Hayabusa transitioned to a body fixed mode using on-board vision sensors, laser measurements, and a passive tracking marker~\cite{kubota2005}. 
 This enabled two touch-and-go landing maneuvers which allowed for the return of surface material to the Earth. 
 
 More recent missions have explored the use of low thrust propulsion.
 This has allowed the Dawn mission to visit both asteroid Vesta and Ceres~\cite{rayman2006}.
 The computation of of interplanetary trajectories generally uses a point mass model for the spacecraft.
-However, in the vicinity of these small bodies the effects of orientation are more pronounced and vital for accurate modeling. 
+However, in the vicinity of these small bodies the effects of attitude coupling are more pronounced and vital for accurate modeling. 
 
 \subsection{Gravitational Potential}
 The classical approach to describing the motion of a objects about a central body has used the point mass approximation~\cite{vallado2001,bate1971}.
@@ -128,8 +131,8 @@ The gravitational potential of a continuous body on a point mass is most general
 	\mathcal{U} = G \int_\mathcal{B} \frac{\rho}{\norm{r + \rho}} \, dm \, ,
 \end{equation*}
 where \( G \) is the universal graviational constant, \( \mathcal{B} \) represents the small body mass distribution, \( r \) is the spacecraft position vector relative to the center of mass of the small body, and \( \rho \) is the position of a differential mass element \( dm \) in the small body fixed frame.
-The representation of the gravity potential field is usually expressed using a spherical harmonic representation with a sufficiently larger number of terms~\cite{scheeres2012}.
-The distributed mass body is the modeled in terms of a infinite sum of spherical harmonic coefficients \( C_{lm} \) and \( S_{lm} \).
+The representation of the gravity potential field is usually expressed using a spherical harmonic representation with a sufficiently large number of terms~\cite{scheeres2012}.
+The distributed mass body is modeled in terms of an infinite sum of spherical harmonic coefficients \( C_{lm} \) and \( S_{lm} \).
 Away from the body, finite truncations are able to approximate the true potential with good accuracy.
 However, when close to the body, or within the Brillouin sphere, this model breaks down and becomes inaccurate or may cause divergence. 
 An improvement uses ellipsoidal harmonic coefficients which extends the spherical harmonic representation much closer to the surface of the small body.
@@ -140,7 +143,7 @@ Another approach models the gravity field as a constant density polyhedron~\cite
 An advantage of this approach is that small details, such as craters or depressions, can be modeled accurately.
 This approach is valid anywhere and accurate for any shape or size of the body. 
 The sole source of errors lies in the shape determination and discretization of the body.
-However, constant density assumption can lead to errors. 
+However, the constant density assumption can lead to errors. 
 In addition, the polyhedral model is complicated to compute for highly detailed shape discretization.
 
 Regardless of the potential model, all are based on the assumption that the spacecraft is accurately represented as a point mass.
@@ -159,13 +162,12 @@ This model is more realistic and removes the point mass assumption that previous
 Utilizing the structure of the dynamic environment allows for low energy transfers and maneuvers.
 Combining this structure with appropriate attitude control will enable orbital transfer maneuvers without the use of propellant.
 
-In order to determine the an appropriate attitude control structure a coupled model of the motion of the spacecraft is required.
+In order to determine an appropriate attitude control structure a coupled model of the motion of the spacecraft is required.
 In addition, dominant perturbing forces such as solar radiation pressure and gravitational effects will also be considered. 
 We demonstrate the effect of a rigid body spacecraft using a preliminary numerical simulation about the asteroid 433 Eros.
 This highlights the need of incorporating a coupled translational and rotational model for spacecraft about small bodies.
 
 \subsection{Full Two-Body Dynamics}
-
 The dynamics of a spacecraft in the vicinity of a small body are defined using the full two-body problem~\cite{fahnestock2006}.
 The spacecraft and small body are modeled as a rigid bodies and are influenced by their mutual gravitational attraction.
 This is an extension to the well known two-body problem as it includes the effects of the mass distribution of the bodies.
@@ -192,7 +194,6 @@ We can model the effect of the asteroid using any of the previously mentioned gr
 However, there is a tradeoff between accuracy and ease of implementation as well as the opportunity for analytical insight. 
 %In addition, the spacecraft experiences a moment caused by solar radiation pressure.
 As result, its dynamics are coupled due to the position and attitude dependent forces and moments.
-
 \subsection{Gravitational Potential}
 The gravitational potential of the asteroid may be expanded using a spherical harmonic expansion as
 \begin{align*}
@@ -212,16 +213,16 @@ This allows for analytical insight prior to the determination of an accurate pot
 This type of model allows for dynamic insight into the motion about the asteroid.
 A Lagrangian is formed as the difference between the kinetic and potential energies, \( L(q, \dot{q}, t) =T - V \).
 If it is possible to transform the Lagrangian into a reference frame where it is time invariant, one may define a constant or integral of motion~\cite{greenwood1988}.
-The Jacobi integral, \( h = \sum_{i=1}^n \partial{L}{\dot{q}_i} \dot{q}_i - L \), is an energy-like constant useful for analysis.
-The existence of this integral allows the use of zero-velocity surfaces to be defined and estabilish the stability.
+The Jacobi integral, \( h = \sum_{i=1}^n \deriv{L}{\dot{q}_i} \dot{q}_i - L(q,\dot{q}) \), is an energy-like constant useful for analysis.
+The existence of this integral allows the use of zero-velocity surfaces to be defined and govern the stability.
 In addition, this implies that equilibrium points can exist as well as families of periodic orbits in these systems~\cite{scheeres2012}.
  
-This structure is similar to that of the three-body problem and allows for a variety of stable and unstable trajectories~\cite{hu2002}.
-In addition, analysis of the dynamic environment allows for energy free transfers about the asteroid and can be extened to landing~\cite{herrera2014}.
+This structure is similar to that of the three-body problem and allows for a variety of stable and unstable manifolds~\cite{hu2002}.
+In addition, analysis of the dynamic environment allows for energy free transfers about the asteroid and can be extended to landing~\cite{herrera2014}.
 Previous work has treated the spacecraft as a point mass rather than an extended rigid body.
 This ignores the significant effects of attitude dependent forces and moments on the vehicle and the resulting trajectory. 
 We avoid this by directly considering a coupled model of the spacecraft.
-Using attitude control we seek to design transfers that allow traversal of the phase space without use of limited on-board propulsion.
+Using attitude control, it is desired to design transfers that allow traversal of the phase space without the use on-board propulsion.
 
 %\subsection{Solar Perturbations}
 %Discuss order of perturbations are the same for solar and gravity terms
@@ -231,21 +232,7 @@ Using attitude control we seek to design transfers that allow traversal of the p
 %More complicated models incorporate surface properties of the body (reflectivity, absorption, specular vs diffuse)
 
 \section{Preliminary Results}
-A preliminary simulation is conducted to demonstrate the effects of coupled rotational and translational dynamics of a spacecraft near an asteroid.
-We represent asteroid 433 Eros as a triaxial ellipsoid and use the second degree and order gravitational potential terms~\cite{misra2015}.
-This is the simplest non-trivial potential model that captures the significant contributions of a continuous mass distribution~\cite{scheeres2012a}.
-The gravitational potential of Eros is defined as
-\begin{align*}
-	\mathcal{U} = \frac{\mu_A}{\norm{r}}-\frac{\mu_A C_{20} \parenth{x^2 + y^2 - 2 z^2}}{2 \norm{r}^5} + \frac{3 \mu_A C_{22} \parenth{x^2 - y^2}}{\norm{r}^5}\, ,
-\end{align*}
-where \( r = \begin{bmatrix} x & y & z \end{bmatrix} \) is the position of the spacecraft relative to the asteroid, represented in the asteroid fixed frame.
-The gravitational force and moment due to the asteroid on the spacecraft are calculated using this form of potential function.
-In spite of this relatively simple model, \Cref{fig:orbits} shows the effect of the orbit-attitude coupling on the motion of a spacecraft.
-Over time the effect of the attitude dependent gravitational force greatly perturbs that trajectory.
-This effect is magnified due to the distended shape of 433 Eros.
-Rather than having a tumbling spacecraft, an attitude control scheme will be generated to control the translational forces on the spacecraft. 
-This will be used to maintain desired orbits as well as transfer between the invariant manifolds of periodic orbits.
-\begin{figure} 
+\begin{figure}
 	\centering 
 	\begin{subfigure}[htbp]{0.3\textwidth} 
 		\includegraphics[width=\textwidth]{10orbits} 
@@ -263,9 +250,25 @@ This will be used to maintain desired orbits as well as transfer between the inv
 	\label{fig:orbits} 
 \end{figure}
 
+A preliminary simulation is conducted to demonstrate the effects of coupled rotational and translational dynamics of a spacecraft near an asteroid.
+We represent asteroid 433 Eros as a triaxial ellipsoid and use the second degree and order gravitational potential terms~\cite{hu2008,scheeres2003}.
+This is the simplest non-trivial potential model that captures the significant contributions of a continuous mass distribution~\cite{scheeres2012a}.
+The gravitational potential of Eros is defined as
+\begin{align*}
+	\mathcal{U} = \frac{\mu_A}{\norm{r}}-\frac{\mu_A C_{20} \parenth{x^2 + y^2 - 2 z^2}}{2 \norm{r}^5} + \frac{3 \mu_A C_{22} \parenth{x^2 - y^2}}{\norm{r}^5}\, ,
+\end{align*}
+where \( r = \begin{bmatrix} x & y & z \end{bmatrix} \) is the position of the spacecraft relative to the asteroid, represented in the asteroid fixed frame.
+The gravitational force and moment due to the asteroid on the spacecraft are calculated using this form of potential function.
+In spite of this relatively simple model, \Cref{fig:orbits} shows the effect of the orbit-attitude coupling on the motion of a spacecraft.
+Over time the effect of the attitude dependent gravitational force greatly perturbs the trajectory.
+This effect is magnified due to the distended shape of 433 Eros.
+Rather than having a tumbling spacecraft, an attitude control scheme will be generated to control the translational forces on the spacecraft. 
+This will be used to maintain desired orbits as well as conduct transfers using invariant manifolds.
+
 In the vicinity of small bodies there is a strong coupling between translational and rotational motion.
-Neglecting these effects is both inaccurate as well as inefficient.
-The goal is the design of attitude control systems that harness the strongly perturbed dynamics near small bodies to enable fuel free transfers and landings.
+These preliminary clearly demonstrate the effect of an attitude dependent on the motion of a spacecraft. 
+Neglecting these effects is both inaccurate and inefficient. 
+The goal of this work is the design of attitude control systems that harness the strongly perturbed dynamics near small bodies to enable fuel free transfers and landings.
 
 %Insight into dynamics by allowing analytical results
 %Possible to obtain this model solely from ground based observations
